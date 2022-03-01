@@ -1,7 +1,7 @@
-/* const notFoundText = (displayStyle) => {
+const notFoundText = (displayStyle) => {
     const notFound = document.getElementById('not-found');
     notFound.style.display = displayStyle;
-} */
+}
 // push search text in api dynamicly.............................................
 const searchField = () => {
     const searchField = document.getElementById('search-field');
@@ -21,6 +21,12 @@ const loadPhone = (fieldText) => {
 // display search result ........................................................
 const displayPhone = phones => {
     console.log(phones.length);
+    if (phones.length == 0) {
+        notFoundText('block')
+    }
+    if (phones.length > 0) {
+        notFoundText('none')
+    }
     const resultContainer = document.getElementById('result-container');
     // clean previous search results
     resultContainer.textContent = '';
@@ -29,8 +35,8 @@ const displayPhone = phones => {
         const col = document.createElement('div');
         col.classList.add('col');
         col.innerHTML = `
-    <div class="card">
-                    <img src="${phone.image}" class="card-img-top" alt="...">
+    <div class="card bg-success">
+                    <img src="${phone.image}" class="card-img-top w-25 mx-auto" alt="...">
                     <div class="card-body">
                         <h5 class="card-title">${phone.phone_name}</h5>
                         <p class="card-text">${phone.brand}</p>
@@ -62,7 +68,7 @@ const displayMore = phone => {
     col.classList.add('col');
     col.innerHTML = `
     <div class="card w-25 mx-auto">
-      <img src="${phone.image}" class="card-img-top" alt="...">
+      <img src="${phone.image}" class="card-img-top w-50 mx-auto" alt="...">
       <div class="card-body">
         <h5 class="card-title">${phone.releaseDate}</h5>
         <h2>Features:</h2>
