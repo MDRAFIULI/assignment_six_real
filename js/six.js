@@ -41,6 +41,7 @@ const loadMore = (id) => {
 const displayMore = phone => {
     console.log(phone);
     const moreContainer = document.getElementById('more-container');
+    moreContainer.textContent = '';
     const col = document.createElement('div');
     col.classList.add('col');
     col.innerHTML = `
@@ -52,8 +53,25 @@ const displayMore = phone => {
         <p class="card-text">displaySize: ${phone.mainFeatures.displaySize}</p>
         <p class="card-text">memory: ${phone.mainFeatures.memory}</p>
         <p class="card-text">storage: ${phone.mainFeatures.storage}</p>
+        <p>others: ${phone.others?.Bluetooth}
+                        ${phone.others?.GPS}
+                        ${phone.others?.NFC}
+                        ${phone.others?.Radio}
+                        ${phone.others?.USB}
+                        ${phone.others?.WLAN}
+                        </p>
       </div>
     </div>
     `;
     moreContainer.appendChild(col);
 }
+/* 
+
+                        <p>others: ${phone.others.Bluetooth}
+                        ${phone.others.GPS}
+                        ${phone.others.NFC}
+                        ${phone.others.Radio}
+                        ${phone.others.USB}
+                        ${phone.others.WLAN}
+                        </p>
+*/
