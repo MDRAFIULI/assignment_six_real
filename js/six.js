@@ -1,22 +1,31 @@
-// push search text in api dynamiclu.............................................
+/* const notFoundText = (displayStyle) => {
+    const notFound = document.getElementById('not-found');
+    notFound.style.display = displayStyle;
+} */
+// push search text in api dynamicly.............................................
 const searchField = () => {
     const searchField = document.getElementById('search-field');
     const searchFieldValue = searchField.value;
-    loadPhone(searchFieldValue)
+    // notFoundText('block');
+    loadPhone(searchFieldValue);
+    // clean search field
     searchField.value = '';
 }
-//get api & append results.......................................................
+//fetch api by name & get data.......................................................
 const loadPhone = (fieldText) => {
     const url = `https://openapi.programming-hero.com/api/phones?search=${fieldText}`
     fetch(url)
         .then(res => res.json())
         .then(data => displayPhone(data.data))
 }
+// display search result ........................................................
 const displayPhone = phones => {
+    console.log(phones.length);
     const resultContainer = document.getElementById('result-container');
+    // clean previous search results
     resultContainer.textContent = '';
+    // loop phone, create div & append in resultContainer
     phones.forEach(phone => {
-        // console.log(phone);
         const col = document.createElement('div');
         col.classList.add('col');
         col.innerHTML = `
@@ -31,17 +40,24 @@ const displayPhone = phones => {
     `;
         resultContainer.appendChild(col);
     })
+    /* if (resultContainer.textContent = '') {
+        notFoundText('block');
+    } */
 }
+// fetch api by id & get data.......................................................
 const loadMore = (id) => {
     const url = `https://openapi.programming-hero.com/api/phone/${id}`;
     fetch(url)
         .then(res => res.json())
         .then(data => displayMore(data.data))
 }
+// display more in top..............................................................
 const displayMore = phone => {
     console.log(phone);
     const moreContainer = document.getElementById('more-container');
+    // clean previous more
     moreContainer.textContent = '';
+    // create div and add inner text and append in moreContainer
     const col = document.createElement('div');
     col.classList.add('col');
     col.innerHTML = `
@@ -74,13 +90,13 @@ const displayMore = phone => {
     `;
     moreContainer.appendChild(col);
 }
-/* 
-
-                        <p>others: ${phone.others.Bluetooth}
-                        ${phone.others.GPS}
-                        ${phone.others.NFC}
-                        ${phone.others.Radio}
-                        ${phone.others.USB}
-                        ${phone.others.WLAN}
-                        </p>
-*/
+/* const notFoundText = (displayStyle) => {
+    const notFound = document.getElementById('not-found');
+    notFound.style.display = displayStyle;
+}
+const displayNotFound = () => {
+    const resultContainer = document.getElementById('result-container');
+    if () {
+        notFoundText('block')
+    }
+} */
