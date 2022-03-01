@@ -39,6 +39,7 @@ const loadMore = (id) => {
         .then(data => displayMore(data.data))
 }
 const displayMore = phone => {
+    console.log(phone);
     const moreContainer = document.getElementById('more-container');
     const col = document.createElement('div');
     col.classList.add('col');
@@ -47,7 +48,10 @@ const displayMore = phone => {
       <img src="${phone.image}" class="card-img-top" alt="...">
       <div class="card-body">
         <h5 class="card-title">${phone.releaseDate}</h5>
-        <p class="card-text"></p>
+        <p class="card-text">chipSet: ${phone.mainFeatures.chipSet}</p>
+        <p class="card-text">displaySize: ${phone.mainFeatures.displaySize}</p>
+        <p class="card-text">memory: ${phone.mainFeatures.memory}</p>
+        <p class="card-text">storage: ${phone.mainFeatures.storage}</p>
       </div>
     </div>
     `;
