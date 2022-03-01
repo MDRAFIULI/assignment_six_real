@@ -49,11 +49,20 @@ const displayMore = phone => {
       <img src="${phone.image}" class="card-img-top" alt="...">
       <div class="card-body">
         <h5 class="card-title">${phone.releaseDate}</h5>
+        <h2>Features:</h2>
         <p class="card-text">chipSet: ${phone.mainFeatures.chipSet}</p>
         <p class="card-text">displaySize: ${phone.mainFeatures.displaySize}</p>
         <p class="card-text">memory: ${phone.mainFeatures.memory}</p>
         <p class="card-text">storage: ${phone.mainFeatures.storage}</p>
-        <p>others: ${phone.others?.Bluetooth}
+        <p><strong>Sensor:</strong>
+        ${phone.mainFeatures?.sensors[0]}
+        ${phone.mainFeatures?.sensors[1]}
+        ${phone.mainFeatures?.sensors[2]}
+        ${phone.mainFeatures?.sensors[3]}
+        ${phone.mainFeatures?.sensors[4]}
+        ${phone.mainFeatures?.sensors[5]}
+        </p>
+        <p>others:<strong>Others:</strong> ${phone.others?.Bluetooth}
                         ${phone.others?.GPS}
                         ${phone.others?.NFC}
                         ${phone.others?.Radio}
