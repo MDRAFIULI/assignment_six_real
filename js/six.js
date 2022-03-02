@@ -22,7 +22,7 @@ const loadPhone = (fieldText) => {
 }
 // display search result ........................................................
 const displayPhone = phones => {
-    console.log(phones.length);
+    console.log(phones);
     if (phones.length == 0) {
         notFoundText('block')
     }
@@ -33,11 +33,10 @@ const displayPhone = phones => {
     // clean previous search results
     resultContainer.textContent = '';
     // loop phone, create div & append in resultContainer
-    if (phones.length < 21) {
-        phones.forEach(phone => {
-            const col = document.createElement('div');
-            col.classList.add('col');
-            col.innerHTML = `
+    phones.slice(0, 20).forEach(phone => {
+        const col = document.createElement('div');
+        col.classList.add('col');
+        col.innerHTML = `
     <div class="card bg-success">
                     <img src="${phone.image}" class="card-img-top w-25 mx-auto" alt="...">
                     <div class="card-body">
@@ -47,12 +46,8 @@ const displayPhone = phones => {
                     </div>
                 </div>
     `;
-            resultContainer.appendChild(col);
-        })
-    }
-    /* if (resultContainer.textContent = '') {
-        notFoundText('block');
-    } */
+        resultContainer.appendChild(col);
+    })
 }
 // fetch api by id & get data.......................................................
 const loadMore = (id) => {
@@ -100,13 +95,3 @@ const displayMore = phone => {
     `;
     moreContainer.appendChild(col);
 }
-/* const notFoundText = (displayStyle) => {
-    const notFound = document.getElementById('not-found');
-    notFound.style.display = displayStyle;
-}
-const displayNotFound = () => {
-    const resultContainer = document.getElementById('result-container');
-    if () {
-        notFoundText('block')
-    }
-} */
