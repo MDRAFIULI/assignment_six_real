@@ -4,6 +4,8 @@ const notFoundText = (displayStyle) => {
 }
 // push search text in api dynamicly.............................................
 const searchField = () => {
+    const moreContainer = document.getElementById('more-container');
+    moreContainer.textContent = '';
     const searchField = document.getElementById('search-field');
     const searchFieldValue = searchField.value;
     // notFoundText('block');
@@ -40,7 +42,7 @@ const displayPhone = phones => {
                     <div class="card-body">
                         <h5 class="card-title">${phone.phone_name}</h5>
                         <p class="card-text">${phone.brand}</p>
-                        <button onclick="loadMore('${phone.slug}')">More</button>
+                        <button class="text-success bg-white" onclick="loadMore('${phone.slug}')">More</button>
                     </div>
                 </div>
     `;
@@ -70,7 +72,7 @@ const displayMore = phone => {
     <div class="card w-25 mx-auto">
       <img src="${phone.image}" class="card-img-top w-50 mx-auto" alt="...">
       <div class="card-body">
-        <h5 class="card-title">${phone.releaseDate}</h5>
+        <h5 class="card-title text-danger">${phone.releaseDate ? phone.releaseDate : 'Release date not found'}</h5>
         <h2>Features:</h2>
         <p class="card-text">chipSet: ${phone.mainFeatures.chipSet}</p>
         <p class="card-text">displaySize: ${phone.mainFeatures.displaySize}</p>
