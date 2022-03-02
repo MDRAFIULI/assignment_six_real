@@ -1,14 +1,16 @@
+//not found massage toggle.....................................................
 const notFoundText = (displayStyle) => {
     const notFound = document.getElementById('not-found');
     notFound.style.display = displayStyle;
 }
 // push search text in api dynamicly.............................................
 const searchField = () => {
+    //get moreContainer
     const moreContainer = document.getElementById('more-container');
     moreContainer.textContent = '';
     const searchField = document.getElementById('search-field');
     const searchFieldValue = searchField.value;
-    // notFoundText('block');
+    //give parameter in loadPhone
     loadPhone(searchFieldValue);
     // clean search field
     searchField.value = '';
@@ -22,17 +24,18 @@ const loadPhone = (fieldText) => {
 }
 // display search result ........................................................
 const displayPhone = phones => {
-    console.log(phones);
+    //not found massage toggle 1
     if (phones.length == 0) {
         notFoundText('block')
     }
+    // not found massage toggle 2
     if (phones.length > 0) {
         notFoundText('none')
     }
     const resultContainer = document.getElementById('result-container');
     // clean previous search results
     resultContainer.textContent = '';
-    // loop phone, create div & append in resultContainer
+    // loop & slice phones, create div & append in resultContainer
     phones.slice(0, 20).forEach(phone => {
         const col = document.createElement('div');
         col.classList.add('col');
@@ -58,7 +61,6 @@ const loadMore = (id) => {
 }
 // display more in top..............................................................
 const displayMore = phone => {
-    console.log(phone);
     const moreContainer = document.getElementById('more-container');
     // clean previous more
     moreContainer.textContent = '';
@@ -69,7 +71,7 @@ const displayMore = phone => {
     <div class="card w-25 mx-auto">
       <img src="${phone.image}" class="card-img-top w-50 mx-auto" alt="...">
       <div class="card-body">
-        <h5 class="card-title text-danger">${phone.releaseDate ? phone.releaseDate : 'Release date not found'}</h5>
+        <h5 class="card-title text-success">${phone.releaseDate ? phone.releaseDate : 'Release date not found'}</h5>
         <h2>Features:</h2>
         <p class="card-text">chipSet: ${phone.mainFeatures.chipSet}</p>
         <p class="card-text">displaySize: ${phone.mainFeatures.displaySize}</p>
@@ -95,3 +97,6 @@ const displayMore = phone => {
     `;
     moreContainer.appendChild(col);
 }
+/* ............
+.....................END..............
+...................................... */
